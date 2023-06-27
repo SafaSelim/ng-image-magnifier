@@ -3,10 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ImageGalleryComponent } from './pages/image-gallery/image-gallery.component';
+import { MagnifyImageDirective } from './directives/magnify-image.directive';
+import { GalleryPreviewComponent } from './components/gallery-preview/gallery-preview.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ImageGalleryComponent,
+    MagnifyImageDirective,
+    GalleryPreviewComponent
   ],
   imports: [
     BrowserModule,
