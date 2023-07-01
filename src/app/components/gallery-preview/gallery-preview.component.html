@@ -1,1 +1,41 @@
-<p>gallery-preview works!</p>
+<div class="gallery-preview">
+  <div class="gallery-preview__backdrop" (click)="onClosePreview()">
+    <div *rxIf="showMask" class="gallery-preview__lightbox" animation2>
+      <div class="content" (click)="$event.stopPropagation()">
+        <span *rxIf="showCount" class="count">{{currentIndex + 1}} / {{totalImageCount}}</span>
+        <button *rxIf="previewImage" (click)="onClosePreview()" class="close-btn">
+          <fa-icon [icon]="faTimes" class="times-icon"></fa-icon>
+        </button>
+
+        <button *rxIf="controls && totalImageCount > 1" (click)="prevImage()"
+          class="btn-lightbox-carousel btn-prev">
+          <fa-icon [icon]="faAngleLeft" class="fa-arrow"></fa-icon>
+        </button>
+
+        <button *rxIf="controls && totalImageCount > 1" (click)="nextImage()"
+          class="btn-lightbox-carousel btn-next">
+          <fa-icon [icon]="faAngleRight" class="fa-arrow"></fa-icon>
+        </button>
+
+        <div *rxIf="previewImage"
+          [@animation]="{value: 'visible'}"
+          (@animation.done)="onAnimationEnd($event)"
+          class="image">
+          <img
+           id="current-lightbox-image"
+           (click)="toggleZoom()"
+           [src]="currentLightboxImage?.url ? currentLightboxImage?.url : images[0].url">
+        </div>
+
+        <div class="image-gallery">
+          <ng-container *ngFor="let image of images; let i = index">
+            <img
+            [class.selected]="this.currentIndex === i"
+            (click)="onPreviewImage(i)"
+            [src]="image?.url">
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

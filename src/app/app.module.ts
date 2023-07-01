@@ -4,19 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ImageGalleryComponent } from './pages/image-gallery/image-gallery.component';
-import { MagnifyImageDirective } from './directives/magnify-image.directive';
-import { GalleryPreviewComponent } from './components/gallery-preview/gallery-preview.component';
+import { MagnifyImageDirectiveModule } from './directives/magnify-image.module';
+import { GalleryPreviewComponentModule } from './components/gallery-preview/gallery-preview.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImageGalleryComponent,
-    MagnifyImageDirective,
-    GalleryPreviewComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MagnifyImageDirectiveModule,
+    GalleryPreviewComponentModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
