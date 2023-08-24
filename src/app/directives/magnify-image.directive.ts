@@ -86,7 +86,7 @@ export class MagnifyImageDirective {
     // When we enter inside the img there will be no lens, so We are adding the mouseenter event listener to the img element
     this.imgElement.addEventListener("mouseenter", (e: any) => this.magnifierActive(e, true));
     // On mouse out, our mouse is on the lens so it will trigger through lens element
-    this.lensElement.addEventListener("mouseout", (e) => this.magnifierActive(e, false));
+    this.imgElement.parentElement.addEventListener("mouseleave", (e) => this.magnifierActive(e, false));
 
     //On resize we need to update the image width and height
     const imgResizeObserver = new ResizeObserver(entries => {
